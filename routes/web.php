@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
-use App\Models\Post;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,10 @@ Route::get('users/{id}', [UserController::class, 'show'])->name('users.show');
 
 Route::post('posts', [PostController::class, 'store'])->name('posts.store');
 
-Route::get('register', [RegisterController::class, 'create'])->name('auth.register');
-Route::post('register', [RegisterController::class, 'store'])->name('auth.store');
-// Route::get('login', [UserController::class, 'create'])->name('users.create');
+Route::get('register', [RegisterController::class, 'create'])->name('auth.register.create')->middleware('guest');
+Route::post('register', [RegisterController::class, 'store'])->name('auth.register.store')->middleware('guest');
+
+Route::get('login', [LoginController::class, 'create'])->name('auth.login.create')->middleware('guest');
+Route::post('login', [LoginController::class, 'authenticate'])->name('auth.login.authenticate')->middleware('guest');
+
+Route::post('logout', [LogoutController::class, 'destroy'])->name('auth.logout')->middleware('auth');

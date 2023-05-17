@@ -3,7 +3,7 @@
 @section('content')
 	<section class="section-form">
 		<div class="shell">
-			<form action="{{ route( 'auth.register' ) }}" method="POST" class="form">
+			<form action="{{ route( 'auth.register.store' ) }}" method="POST" class="form">
 				@csrf
 
 				<div class="form__field">

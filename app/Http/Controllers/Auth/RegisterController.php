@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redirect;
 
 class RegisterController extends Controller
 {
@@ -27,7 +27,7 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-	public function store(Request $request): Redirect
+	public function store(Request $request): RedirectResponse
 	{
 		$formFields = $request->validate([
 			'username' => 'required|unique:users,username|min:3|max:255',

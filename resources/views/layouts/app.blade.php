@@ -32,13 +32,29 @@
 							<a href="{{ route( 'users.index' ) }}">Users</a>
 						</li>
 
-						<li>
-							<a href="{{ route( 'posts.create' ) }}">Add a post</a>
-						</li>
+						@auth
+							<li>
+								<a href="{{ route( 'posts.create' ) }}">Add a post</a>
+							</li>
 
-						<li>
-							<a href="{{ route( 'auth.register' ) }}">Register</a>
-						</li>
+							<li>
+								<form action="{{ route( 'auth.logout' ) }}" method="post">
+									@csrf
+									
+									<button type="submit">Logout</button>
+								</form>
+							</li>
+						@endauth
+						
+						@guest
+							<li>
+								<a href="{{ route( 'auth.register.create' ) }}">Register</a>
+							</li>
+
+							<li>
+								<a href="{{ route( 'auth.login.create' ) }}">Login</a>
+							</li>
+						@endguest
 					</ul>
 				</nav><!-- /.nav -->
 			</div><!-- /.header__inner -->
