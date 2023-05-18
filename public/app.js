@@ -2,11 +2,27 @@ const html = document.querySelector('html');
 const themeToggle = document.querySelector('.js-theme-toggle');
 
 const toggleTheme = (e) => {
-	if (e.target.checked) {
-		html.dataset.theme = 'dark';
-	} else {
-		html.dataset.theme = 'cupcake';
+	let theme = e.target.checked ? 'dark' : 'cupcake';
+
+	html.dataset.theme = theme;
+
+	localStorage.setItem('theme', theme);
+};
+
+const setThemeFromState = () => {
+	let theme = localStorage.getItem('theme');
+
+
+	if (!theme) {
+		theme = 'cupcake';
 	}
+
+	if (theme == 'dark') {
+		themeToggle.checked = true;
+	}
+
+	html.dataset.theme = theme;
 };
 
 themeToggle.addEventListener('change', toggleTheme);
+setThemeFromState();
