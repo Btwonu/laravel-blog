@@ -2,7 +2,7 @@
 
 @section('content')
 	<section class="section-categories">
-		<div class="shell">
+		<div class="shell max-w-screen-xl mx-auto px-4">
 			<article class="category">
 				<header class="category__head">
 					<h3>{{ $category->title }}</h3>

@@ -2,7 +2,7 @@
 
 @section('content')
 	<section class="section-profile">
-		<div class="shell">
+		<div class="shell max-w-screen-xl mx-auto px-4">
 			<header class="section__head">
 				<p>This is {{ $user->name }}'s profile.</p>
 			</header><!-- /.section__head -->

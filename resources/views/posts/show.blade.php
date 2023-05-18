@@ -2,7 +2,7 @@
 
 @section('content')
 	<section class="section-single-post">
-		<div class="shell">
+		<div class="shell max-w-screen-xl mx-auto px-4">
 			<article class="post">
 				<header class="post__head">
 					<h3>{{ $post->title }}</h3>

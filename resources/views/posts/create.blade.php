@@ -2,7 +2,7 @@
 
 @section('content')
 	<section class="section-form">
-		<div class="shell">
+		<div class="shell max-w-screen-xl mx-auto px-4">
 			<form action="{{ route( 'posts.store' ) }}" method="POST" class="form">
 				@csrf
 
