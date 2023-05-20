@@ -46,6 +46,11 @@ class Post extends Model
 
 	public function scopeFilter($query, array $filters): Builder
 	{
+		if ($filters['category'] ?? false) {
+			$category = Category::where('slug', $filters['category'])->get()->first();
+			$query->where('category_id', $category->id);
+		}
+
 		if ($filters['search'] ?? false) {
 			$query
 				->where('title', 'like', '%' . $filters['search'] . '%')

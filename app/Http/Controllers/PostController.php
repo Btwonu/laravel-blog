@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -12,9 +13,11 @@ class PostController extends Controller
 {
 	public function index(Request $request): View
 	{
-		$posts = Post::latest()->filter(['search' => $request->search]);
+		$posts = Post::latest()->filter(['search' => $request->search, 'category' => $request->category]);
+		$categories = Category::all();
+		$tags = Tag::all();
 
-		return view('posts/index', [ 'posts' => $posts->get() ]);
+		return view('posts/index', [ 'posts' => $posts->get(), 'categories' => $categories, 'tags'=> $tags ]);
 	}
 
     public function show($id): View
