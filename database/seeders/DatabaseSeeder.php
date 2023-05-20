@@ -4,10 +4,12 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Container\Container;
 use Faker\Generator;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -47,6 +49,8 @@ class DatabaseSeeder extends Seeder
     {
         // $categories = Category::factory(3)->create();
         $users = User::factory(3)->create();
+		$tags = Tag::factory(10)->create();
+		$posts = [];
 
 		$categories = [
 			Category::create([
@@ -88,7 +92,17 @@ class DatabaseSeeder extends Seeder
 						'user_id' => $users->random()->id,
 					],
 				]);
+
+				$posts[] = $post;
             }
         }
+
+		$tagIdsCollection = Tag::all()->map(function($tag) {
+			return $tag->id;
+		});
+
+		foreach ($posts as $post) {
+			$post->tags()->sync( $this->faker->randomElements($tagIdsCollection->all(), 5) );
+		}
     }
 }
