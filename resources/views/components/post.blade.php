@@ -4,14 +4,21 @@
 	</figure>
 
 	<div class="card-body">
-	  <h2 class="card-title">
-		<a href="{{ route('posts.show', ['id' => $id]) }}">{{ $title }}</a>
-	  </h2>
+		<div class="card__tags flex flex-wrap gap-2">
+			@foreach ($tags as $tag)
+				<div class="badge">{{ $tag->title }}</div>
+			@endforeach
+		</div><!-- /.card__tags flex flex-wrap gap-2 -->
 
-	  <p>Port-salut manchego cheddar. Airedale cheese strings brie rubber cheese melted cheese swiss bavarian bergkase brie. Who moved my cheese...</p>
+		<h2 class="card-title">
+			<a href="{{ route('posts.show', ['id' => $id]) }}">{{ $title }}</a>
+		</h2>
 
-	  <div class="card-actions justify-end">
-		<a href="{{ route('posts.show', ['id' => $id]) }}" class="btn btn-primary">Read</a>
-	  </div>
+		<p>Port-salut manchego cheddar. Airedale cheese strings brie rubber cheese melted cheese swiss bavarian bergkase brie.
+			Who moved my cheese...</p>
+
+		<div class="card-actions justify-end">
+			<a href="{{ route('posts.show', ['id' => $id]) }}" class="btn-primary btn">Read</a>
+		</div>
 	</div>
-  </div>
+</div>

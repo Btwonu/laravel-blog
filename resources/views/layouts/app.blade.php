@@ -11,10 +11,6 @@
 </head>
 
 <body>
-    <?php
-    // @dd(get_defined_vars());
-    ?>
-
     <header class="header">
 		<div class="shell max-w-screen-xl mx-auto px-4">
 			<div class="header__inner flex align-center mh-2 w-full py-4">
@@ -31,10 +27,6 @@
 						<ul class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
 							<li>
 								<a href="{{ route('home') }}">Home</a>
-							</li>
-			
-							<li>
-								<a href="{{ route('categories.index') }}">Categories</a>
 							</li>
 			
 							<li>
@@ -74,10 +66,6 @@
 					<ul class="menu menu-horizontal px-1">
 						<li>
 							<a href="{{ route('home') }}">Home</a>
-						</li>
-		
-						<li>
-							<a href="{{ route('categories.index') }}">Categories</a>
 						</li>
 		
 						<li>
@@ -121,7 +109,7 @@
 
     @yield('content')
 
-    <script src="/app.js"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 
 </html>

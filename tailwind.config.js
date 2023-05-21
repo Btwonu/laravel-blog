@@ -10,7 +10,11 @@ module.exports = {
 			'2': '0 0 50%',
 			'3': '0 0 33%',
 		},
-        extend: {},
+        extend: {
+			colors: {
+				'dark': '#291334'
+			},
+		},
     },
     plugins: [require("daisyui")],
 };

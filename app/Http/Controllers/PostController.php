@@ -13,7 +13,7 @@ class PostController extends Controller
 {
 	public function index(Request $request): View
 	{
-		$posts = Post::latest()->filter(['search' => $request->search, 'category' => $request->category]);
+		$posts = Post::latest()->with('tags')->filter(['search' => $request->search, 'category' => $request->category, 'tags' => $request->tags]);
 		$categories = Category::all();
 		$tags = Tag::all();
 
