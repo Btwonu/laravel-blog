@@ -14,7 +14,6 @@ const toggleTheme = (e) => {
 const setThemeFromState = () => {
 	let theme = localStorage.getItem('theme');
 
-
 	if (!theme) {
 		theme = 'cupcake';
 	}

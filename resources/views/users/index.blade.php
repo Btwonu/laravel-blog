@@ -20,35 +20,7 @@
 
 				<tbody>
 					@foreach ($users as $user)
-						<tr>
-							<td>
-								<div class="flex items-center space-x-3">
-									<div class="avatar">
-										<div class="mask mask-squircle w-12 h-12">
-											<img src="https://i.pravatar.cc/150?u={{ $user->username }}" alt="Avatar" />
-										</div>
-									</div>
-
-									<div>
-										<div class="font-bold">
-											<a href="{{ route( 'users.show', [ 'id' => $user->id ] ) }}">{{ $user->username }}</a>
-										</div>
-									</div>
-								</div>
-							</td>
-	
-							<td>
-								Zemlak, Daniel and Leannon
-								<br />
-								<span class="badge badge-ghost badge-sm">Desktop Support Technician</span>
-							</td>
-	
-							<td>Purple</td>
-	
-							<th>
-								<a href="{{ route( 'users.show', [ 'id' => $user->id ] ) }}" class="btn btn-ghost btn-xs">details</a>
-							</th>
-						</tr>
+						<x-user :id="$user->id" :username="$user->username"></x-user>
 					@endforeach
 				</tbody>
 
