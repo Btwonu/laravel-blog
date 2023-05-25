@@ -2,14 +2,14 @@
 
 @section('content')
 	<section class="section-form">
-		<div class="shell max-w-screen-xl mx-auto px-4">
-			<form action="{{ route( 'posts.store' ) }}" method="POST" class="form">
+		<div class="shell mx-auto max-w-screen-xl px-4">
+			<form action="{{ route('posts.store') }}" method="POST" class="form" enctype="multipart/form-data">
 				@csrf
 
 				<div class="form__field">
 					<label for="p-title">Post title</label>
 
-					<input id="p-title" type="text" name="title" value="{{ old('title') }}"/>
+					<input id="p-title" type="text" name="title" value="{{ old('title') }}" />
 
 					<p class="form__error">
 						@error('title')
@@ -20,7 +20,7 @@
 
 				<div class="form__field">
 					<label for="p-body">Post body</label>
-	
+
 					<textarea name="body" id="p-body">{{ old('body') }}</textarea>
 
 					<p class="form__error">
@@ -45,6 +45,16 @@
 
 					<p class="form__error">
 						@error('category')
+							{{ $message }}
+						@enderror
+					</p><!-- /.form__error -->
+				</div><!-- /.form__field -->
+
+				<div class="form__field">
+					<input id="p-image" type="file" name="image" accept="image/png, image/jpeg" value="{{ old('image') }}" />
+
+					<p class="form__error">
+						@error('image')
 							{{ $message }}
 						@enderror
 					</p><!-- /.form__error -->

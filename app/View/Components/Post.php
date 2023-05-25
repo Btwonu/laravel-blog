@@ -10,17 +10,19 @@ class Post extends Component
 	public int $id;
 	public string $title;
 	public Collection $tags;
+	public string $imgUrl;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($id, $title, $tags)
+    public function __construct($id, $title, $tags, $imgUrl)
     {
 		$this->id = $id;
         $this->title = $title;
 		$this->tags = $tags;
+		$this->imgUrl = $imgUrl;
     }
 
     /**

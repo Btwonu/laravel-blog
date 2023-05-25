@@ -59,7 +59,7 @@
 
 						@foreach ($posts as $post)
 							<div class="posts__item flex flex-2 flex-grow py-4 md:p-4 lg:flex-3">
-								<x-post :id="$post->id" :title="$post->title" :tags="$post->tags">
+								<x-post :id="$post->id" :title="$post->title" :tags="$post->tags" :imgUrl="$post->img_url">
 								</x-post>
 							</div><!-- /.posts__item -->
 						@endforeach

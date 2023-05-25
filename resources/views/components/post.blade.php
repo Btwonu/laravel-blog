@@ -1,6 +1,6 @@
 <div class="card w-full bg-base-100 shadow-xl">
-	<figure>
-		<img src="https://picsum.photos/400/200" alt="Shoes" />
+	<figure class="relative aspect-[4/3] w-full">
+		<img class="absolute inset-0 object-cover w-full h-full" src="{{ asset($imgUrl) }}" alt="Image" />
 	</figure>
 
 	<div class="card-body">

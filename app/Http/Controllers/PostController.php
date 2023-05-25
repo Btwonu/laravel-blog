@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class PostController extends Controller
@@ -36,19 +37,28 @@ class PostController extends Controller
 
 	public function store(Request $request)
 	{
+
 		$formFields = $request->validate([
 			'title' => 'required|unique:posts|min:5|max:255',
 			'body' => 'required|min:10|max:65535',
 			'category' => 'required',
+			'image' => 'image|mimes:jpeg,png,jpg|max:2048'
 		]);
+		
+		$user = auth()->user();
+		$image = $formFields['image'];
 
-		$user = User::inRandomOrder()->first();
+		if ($image) {
+			$path = Storage::disk('public')->put('images', $image);
+			$imageUrl = Storage::disk('public')->url($path);
+		}
 
 		$post = new Post();
 		$post->title = $formFields['title'];
 		$post->body = $formFields['body'];
 		$post->category_id = $formFields['category'];
 		$post->user_id = $user->id;
+		$post->img_url = $imageUrl;
 		$post->save();
 		
 		return redirect(route('home'));

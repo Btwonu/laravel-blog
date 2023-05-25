@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Faker\Factory as Faker;
+use Illuminate\Support\Facades\Storage;
 
 class CreatePostsTable extends Migration
 {
@@ -21,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->timestamps();
 			$table->string('title');
 			$table->text('body');
+			$table->string('img_url')->default(env('APP_URL') . Storage::url('mRLtGZ5zqAOXhugVRqD0Ebq0CrfYV8vHAdshd1Pf.jpg'));
         });
     }
 
